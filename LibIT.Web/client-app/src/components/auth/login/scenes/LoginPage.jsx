@@ -37,6 +37,9 @@ class LoginPage extends Component {
             };
             this.props.loginUser(model);
             
+            //встановили, хто зайшов з якої пошти
+            localStorage.setItem("email", model.Email);
+
             this.setState({ errorMessage: "", errors, loading: true });
         }
         else {
@@ -52,8 +55,8 @@ class LoginPage extends Component {
         //this.setState
     }
     render() {
-        console.log("Login props: ", this.props);
-        console.log("Login state: ", this.state);
+        //console.log("Login props: ", this.props);
+        //console.log("Login state: ", this.state);
         //const errorMessage = this.state.errorMessage;
         const { 
             email,
@@ -79,7 +82,7 @@ class LoginPage extends Component {
                                 <TextFieldGroup 
                                     field="email"
                                     value={email}
-                                    label="Ектронна пошта"
+                                    label="Електронна пошта"
                                     icon="fa fa-envelope"
                                     type="email"
                                     //placeholder="Email"

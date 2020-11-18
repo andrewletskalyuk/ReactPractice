@@ -9,8 +9,7 @@ export const loginUser = (model) => {
             .then((response)=>{
                 dispatch({type: types.LOGIN_SUCCESS});
                 dispatch(push('/'));
-                console.log("---------------", response.data);
-                //const token = await tokenProvider.getToken();
+
                 localStorage.setItem("token", response.data.token);
             }, err => {
                 //console.log("error: ", err.response);
