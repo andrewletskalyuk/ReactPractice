@@ -55,9 +55,6 @@ class LoginPage extends Component {
         //this.setState
     }
     render() {
-        //console.log("Login props: ", this.props);
-        //console.log("Login state: ", this.state);
-        //const errorMessage = this.state.errorMessage;
         const { 
             email,
             password,

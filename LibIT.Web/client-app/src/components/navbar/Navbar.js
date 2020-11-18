@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import NameInNavbar from '../nameInNavbar/NameInNavBar';
+import { connect } from 'react-redux';
+
 
 class Navbar extends Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class Navbar extends Component {
     }
 
     render() {
+        console.log("props з Навбару", this.props)
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <Link className="navbar-brand" to="/">=Навігація=</Link>
@@ -41,11 +43,6 @@ class Navbar extends Component {
                         <li className="nav-item">
                             <Link className="nav-link disabled" to="/">Профіль</Link>
                         </li>
-                        <li className="nav-item">
-                            <div className="nav-link">
-                                <NameInNavbar />
-                            </div>
-                        </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
@@ -57,4 +54,10 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+const mapState=(stateResux)=>{
+    return{
+        isAuthentificated: stateResux.login.isAuthentificated
+    }
+}
+
+export default connect(mapState)(Navbar);

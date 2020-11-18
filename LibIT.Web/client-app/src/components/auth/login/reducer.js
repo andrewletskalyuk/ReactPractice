@@ -1,7 +1,15 @@
 import * as types from './types';
+import isEmpty from 'lodash/isEmpty';
 const intialState = {
+    user:{
+        id: '',
+        name: '',
+        roles: []
+    },
+    isAuthentificated: false,
     loading: false,
-    errors: {}
+    errors: {  
+    }
 }
 
 export const loginReducer = (state = intialState, action) => {
@@ -9,7 +17,7 @@ export const loginReducer = (state = intialState, action) => {
     switch (action.type) {
         case types.LOGIN_STARTED:
             return {
-                //...this.state,
+                ...state,
                 loading: true,
                 errors: {}
             }
@@ -17,6 +25,7 @@ export const loginReducer = (state = intialState, action) => {
             
         case types.LOGIN_SUCCESS:
             return {
+                ...state,
                 loading: false,
                 errors: {}
             }
@@ -24,11 +33,19 @@ export const loginReducer = (state = intialState, action) => {
 
         case types.LOGIN_FAILED:
                 return {
+                    ...state,
                     loading: false,
                     errors: action.errors
                 }
             break;
-    
+        case types.LOGIN_SET_CURRENT_USER:{
+            return{
+                ...state, //виймає властивості state і замінює їх
+                          //властивостями, що ми прописали нижче user
+                user: action.user,
+                isAuthentificated: !isEmpty(action.user),
+            }
+        }        
         default:
             break;
     }

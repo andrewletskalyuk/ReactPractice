@@ -1,14 +1,23 @@
 import { React, Component } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 class NameInNavbar extends Component {
+    state = {
+        email: ''
+    }
+    
+    // stateChange = () =>{
+    //     const emailFormLocalStorage = localStorage.getItem("email");
+    //     this.setState({
+    //         [email]: emailFormLocalStorage
+    //     });
+    // }
 
     render() {
-        const email = localStorage.getItem("email");
-        //console.log("email нашого користувача", email);
+        console.log("email нашого користувача", this.state.email);
         return (
             <div>
-                {email}
+                {this.state.email}
             </div>
         );
     }
